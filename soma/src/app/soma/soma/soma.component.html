@@ -1,1 +1,11 @@
-<p>soma works!</p>
+<form>
+  Número 1: <input type="text" #num1 /><br />
+  Número 2: <input type="text" #num2 /><br />
+  <input
+    type="button"
+    value="Somar"
+    (click)="somar(num1.value, num2.value)"
+  /><br />
+  Resultado:
+  <input type="text" #num3 [value]="resultado ? resultado : ''" /><br />
+</form>
