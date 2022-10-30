@@ -1,12 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { NgModule } from '@angular/core';
+import { SomaComponent } from './soma';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [SomaComponent],
+  imports: [CommonModule],
 })
-export class SomaModule { }
+export class SomaModule {}
