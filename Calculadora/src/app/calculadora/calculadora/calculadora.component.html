@@ -37,13 +37,39 @@
         </div>
       </div>
 
-      <button
-        type="button"
-        class="btn btn-primary"
-        (click)="somar(numero1.value, numero2.value)"
-      >
-        Somar
-      </button>
+      <div class="my-4">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="somar(numero1.value, numero2.value)"
+        >
+          Somar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-primary mx-4"
+          (click)="subtrair(numero1.value, numero2.value)"
+        >
+          Subtrair
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="multiplicar(numero1.value, numero2.value)"
+        >
+          Multiplicar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-primary mx-4"
+          (click)="dividir(numero1.value, numero2.value)"
+        >
+          Dividir
+        </button>
+      </div>
 
       <div class="form-group row">
         <label for="resultado" class="col-sm-2 col-form-label"
