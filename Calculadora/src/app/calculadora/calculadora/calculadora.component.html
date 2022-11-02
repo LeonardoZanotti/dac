@@ -1,0 +1,12 @@
+<form>
+  Número 1:
+  <input #num1 type="text" />
+  <br />
+  Número 2:
+  <input #num2 type="text" />
+  <br />
+  <button type="button" (click)="somar(num1.value, num2.value)">Somar</button>
+  <br />
+  Resultado:
+  <input [value]="getResultado ? getResultado : ''" />
+</form>
