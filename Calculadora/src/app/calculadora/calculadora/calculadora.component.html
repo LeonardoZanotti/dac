@@ -1,12 +1,64 @@
-<form>
-  Número 1:
-  <input #num1 type="text" />
-  <br />
-  Número 2:
-  <input #num2 type="text" />
-  <br />
-  <button type="button" (click)="somar(num1.value, num2.value)">Somar</button>
-  <br />
-  Resultado:
-  <input [value]="getResultado ? getResultado : ''" />
-</form>
+<nav class="navbar navbar-default m-3">
+  <div class="conteiner-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"> Projeto Calculadora </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="col-md-6 col-md-offset-6">
+    <form>
+      <div class="form-group row">
+        <label for="numero1" class="col-sm-2 col-form-label">Número 1:</label>
+        <div class="col-sm-4">
+          <input
+            id="numero1"
+            class="form-control"
+            placeholder="Número 1"
+            #numero1
+            type="text"
+          />
+          <small class="form-test text-muted">Digite o 1° número</small>
+        </div>
+      </div>
+
+      <div class="form-group row my-4">
+        <label for="numero2" class="col-sm-2 col-form-label">Número 2:</label>
+        <div class="col-sm-4">
+          <input
+            id="numero2"
+            class="form-control"
+            placeholder="Número 2"
+            #numero2
+            type="text"
+          />
+          <small class="form-test text-muted">Digite o 2° número</small>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="somar(numero1.value, numero2.value)"
+      >
+        Somar
+      </button>
+
+      <div class="form-group row">
+        <label for="resultado" class="col-sm-2 col-form-label"
+          >Resultado:</label
+        >
+        <div class="col-sm-4">
+          <input
+            id="resultado"
+            class="form-control"
+            type="text"
+            [value]="getResultado ? getResultado : ''"
+            readonly
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
