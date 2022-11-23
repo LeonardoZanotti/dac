@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditarCidadeComponent } from './cidade/editar-cidade/editar-cidade.component';
 import { InserirCidadeComponent } from './cidade/inserir-cidade/inserir-cidade.component';
 import { ListarCidadeComponent } from './cidade/listar-cidade/listar-cidade.component';
 import { EditarEnderecoComponent } from './endereco/editar-endereco/editar-endereco.component';
@@ -20,20 +21,20 @@ const routes: Routes = [
   { path: 'pessoas/novo', component: InserirPessoaComponent },
   { path: 'pessoas/editar/:id', component: EditarPessoaComponent },
 
-  { path: 'estado', redirectTo: 'estado/listar' },
-  { path: 'estado/listar', component: ListarEstadoComponent },
-  { path: 'estado/novo', component: InserirEstadoComponent },
-  { path: 'estado/editar/:id', component: EditarEstadoComponent },
+  { path: 'estados', redirectTo: 'estados/listar' },
+  { path: 'estados/listar', component: ListarEstadoComponent },
+  { path: 'estados/novo', component: InserirEstadoComponent },
+  { path: 'estados/editar/:id', component: EditarEstadoComponent },
 
-  { path: 'cidade', redirectTo: 'cidade/listar' },
-  { path: 'cidade/listar', component: ListarCidadeComponent },
-  { path: 'cidade/novo', component: InserirCidadeComponent },
-  { path: 'cidade/editar/:id', component: EditarEstadoComponent },
+  { path: 'cidades', redirectTo: 'cidades/listar' },
+  { path: 'cidades/listar', component: ListarCidadeComponent },
+  { path: 'cidades/novo', component: InserirCidadeComponent },
+  { path: 'cidades/editar/:id', component: EditarCidadeComponent },
 
-  { path: 'endereco', redirectTo: 'endereco/listar' },
-  { path: 'endereco/listar', component: ListarEnderecoComponent },
-  { path: 'endereco/novo', component: InserirEnderecoComponent },
-  { path: 'endereco/editar/:id', component: EditarEnderecoComponent },
+  { path: 'enderecos', redirectTo: 'enderecos/listar' },
+  { path: 'enderecos/listar', component: ListarEnderecoComponent },
+  { path: 'enderecos/novo', component: InserirEnderecoComponent },
+  { path: 'enderecos/editar/:id', component: EditarEnderecoComponent },
 ];
 
 @NgModule({
