@@ -22,7 +22,13 @@
       <td class="text-center">{{ pessoa.nome }}</td>
       <td class="text-center">{{ pessoa.idade }}</td>
       <td class="text-center" style="width: 300px">
-        <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-info">
+        <a
+          [routerLink]="['/pessoas/editar', pessoa.id]"
+          href="#"
+          title="Editar"
+          alt="Editar"
+          class="btn btn-xs btn-info"
+        >
           <i class="fa fa-edit" aria-hidden="true"></i> Editar
         </a>
         <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger">
