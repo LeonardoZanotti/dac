@@ -42,8 +42,29 @@
         *ngIf="idade.errors && (idade.dirty || idade.touched)"
         class="alert alert-danger"
       >
-        <div [hidden]="!nome.errors?.['required']">
+        <div [hidden]="!idade.errors?.['required']">
           Digite a idade da pessoa.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nascimento">Data de nascimento:</label>
+      <input
+        type="date"
+        class="form-control"
+        id="nascimento"
+        name="nascimento"
+        [(ngModel)]="pessoa.nascimento"
+        #nascimento="ngModel"
+        required
+      />
+      <div
+        *ngIf="nascimento.errors && (nascimento.dirty || nascimento.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!nascimento.errors?.['required']">
+          Informe a data de nascimento da pessoa.
         </div>
       </div>
     </div>

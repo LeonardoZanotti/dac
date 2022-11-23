@@ -5,6 +5,7 @@
     <tr>
       <th class="text-center">Nome</th>
       <th class="text-center">Idade</th>
+      <th class="text-center">Data de nascimento</th>
       <th class="text-center">
         <a
           [routerLink]="['/pessoas/novo']"
@@ -21,6 +22,7 @@
     <tr *ngFor="let pessoa of pessoas">
       <td class="text-center">{{ pessoa.nome }}</td>
       <td class="text-center">{{ pessoa.idade }}</td>
+      <td class="text-center">{{ pessoa.nascimento | date: "dd/MM/yyyy" }}</td>
       <td class="text-center" style="width: 300px">
         <a
           [routerLink]="['/pessoas/editar', pessoa.id]"
