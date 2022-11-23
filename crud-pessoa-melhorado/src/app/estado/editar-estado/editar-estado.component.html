@@ -36,6 +36,8 @@
         name="sigla"
         [(ngModel)]="estado.sigla"
         #sigla="ngModel"
+        minlength="2"
+        maxlength="2"
         required
       />
       <div
@@ -44,6 +46,9 @@
       >
         <div [hidden]="!sigla.errors?.['required']">
           Digite a sigla do estado.
+        </div>
+        <div [hidden]="!sigla.errors?.['minlength']">
+          A sigla deve ter exatamente 2 caracteres.
         </div>
       </div>
     </div>

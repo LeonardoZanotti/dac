@@ -30,6 +30,7 @@
         name="numero"
         [(ngModel)]="endereco.numero"
         #numero="ngModel"
+        numerico
         required
       />
       <div
@@ -49,16 +50,7 @@
         name="complemento"
         [(ngModel)]="endereco.complemento"
         #complemento="ngModel"
-        required
       />
-      <div
-        *ngIf="complemento.errors && (complemento.dirty || complemento.touched)"
-        class="alert alert-danger"
-      >
-        <div [hidden]="!complemento.errors?.['required']">
-          Digite o complemento.
-        </div>
-      </div>
     </div>
 
     <div class="form-group">
@@ -89,6 +81,7 @@
         name="cep"
         [(ngModel)]="endereco.cep"
         #cep="ngModel"
+        mask="00.000-000"
         required
       />
       <div
