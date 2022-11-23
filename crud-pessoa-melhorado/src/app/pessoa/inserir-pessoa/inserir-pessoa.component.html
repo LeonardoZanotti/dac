@@ -37,6 +37,7 @@
         [(ngModel)]="pessoa.idade"
         #idade="ngModel"
         required
+        numerico
       />
       <div
         *ngIf="idade.errors && (idade.dirty || idade.touched)"

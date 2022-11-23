@@ -6,9 +6,10 @@ import { CidadeModule } from './cidade/cidade.module';
 import { EnderecoModule } from './endereco/endereco.module';
 import { EstadoModule } from './estado/estado.module';
 import { PessoaModule } from './pessoa/pessoa.module';
+import { NumericoDirective } from './shared/directives/numerico.directive';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NumericoDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,
