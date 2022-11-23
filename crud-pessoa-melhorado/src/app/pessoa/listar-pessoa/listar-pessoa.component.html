@@ -20,7 +20,7 @@
     </tr>
 
     <tr *ngFor="let pessoa of pessoas">
-      <td class="text-center">{{ pessoa.nome }}</td>
+      <td class="text-center">{{ pessoa.nome | caixaAlta }}</td>
       <td class="text-center">{{ pessoa.idade }}</td>
       <td class="text-center">{{ pessoa.nascimento! | mask: "d0/M0/0000" }}</td>
       <td class="text-center" style="width: 300px">
