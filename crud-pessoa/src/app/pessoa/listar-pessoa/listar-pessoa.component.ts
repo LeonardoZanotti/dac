@@ -13,11 +13,6 @@ export class ListarPessoaComponent implements OnInit {
   constructor(private pessoaService: PessoaService) {}
 
   ngOnInit(): void {
-    // this.pessoas = this.pessoaService.listarTodos();
-    this.pessoas = [
-      new Pessoa(1, 'Leo', 14),
-      new Pessoa(2, 'Ana', 54),
-      new Pessoa(3, 'Cláudio', 44),
-    ];
+    this.pessoas = this.pessoaService.listarTodos();
   }
 }

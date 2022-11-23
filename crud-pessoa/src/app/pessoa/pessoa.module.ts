@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ListarPessoaComponent } from './listar-pessoa/listar-pessoa.component';
 import { PessoaService } from './services/pessoa.service';
+import { InserirPessoaComponent } from './inserir-pessoa/inserir-pessoa.component';
 
 @NgModule({
-  declarations: [ListarPessoaComponent],
+  declarations: [ListarPessoaComponent, InserirPessoaComponent],
   imports: [CommonModule, RouterModule, FormsModule],
   providers: [PessoaService],
 })
