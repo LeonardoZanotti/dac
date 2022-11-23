@@ -26,12 +26,21 @@
     <tr *ngFor="let endereco of enderecos">
       <td class="text-center">{{ endereco.rua }}</td>
       <td class="text-center">{{ endereco.numero }}</td>
-      <td class="text-center">{{ endereco.complemento }}</td>
+      <td class="text-center">
+        {{ endereco.complemento ? endereco.complemento : "Não informado" }}
+      </td>
       <td class="text-center">{{ endereco.bairro }}</td>
-      <td class="text-center">{{ endereco.cep }}</td>
+      <td class="text-center">{{ endereco.cep! | mask: "00.000-000" }}</td>
       <td class="text-center">{{ endereco.cidade }}</td>
       <td class="text-center">{{ endereco.estado }}</td>
       <td class="text-center" style="width: 300px">
+        <button
+          type="button"
+          class="btn btn-xs btn-info"
+          (click)="abrirModalEndereco(endereco)"
+        >
+          <i class="fa fa-eye" aria-hidden="true"></i> Ver
+        </button>
         <a
           [routerLink]="['/enderecos/editar', endereco.id]"
           href="#"

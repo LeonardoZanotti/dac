@@ -6,12 +6,14 @@ import { EditarCidadeComponent } from './editar-cidade/editar-cidade.component';
 import { InserirCidadeComponent } from './inserir-cidade/inserir-cidade.component';
 import { ListarCidadeComponent } from './listar-cidade/listar-cidade.component';
 import { CidadeService } from './services/cidade.service';
+import { ModalCidadeComponent } from './modal-cidade/modal-cidade.component';
 
 @NgModule({
   declarations: [
     EditarCidadeComponent,
     ListarCidadeComponent,
     InserirCidadeComponent,
+    ModalCidadeComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule],
   providers: [CidadeService],

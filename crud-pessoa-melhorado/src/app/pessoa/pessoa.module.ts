@@ -8,6 +8,7 @@ import { EditarPessoaComponent } from './editar-pessoa/editar-pessoa.component';
 import { InserirPessoaComponent } from './inserir-pessoa/inserir-pessoa.component';
 import { ListarPessoaComponent } from './listar-pessoa/listar-pessoa.component';
 import { PessoaService } from './services/pessoa.service';
+import { ModalPessoaComponent } from './modal-pessoa/modal-pessoa.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -16,6 +17,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     ListarPessoaComponent,
     InserirPessoaComponent,
     EditarPessoaComponent,
+    ModalPessoaComponent,
   ],
   imports: [
     CommonModule,
