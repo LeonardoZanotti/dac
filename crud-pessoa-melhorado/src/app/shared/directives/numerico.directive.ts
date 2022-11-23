@@ -18,7 +18,7 @@ export class NumericoDirective implements ControlValueAccessor {
   constructor(private el: ElementRef) {}
 
   writeValue(value: any): void {
-    this.el.nativeElement.value = value;
+    if (value) this.el.nativeElement.value = value;
   }
 
   registerOnChange(fn: any): void {
