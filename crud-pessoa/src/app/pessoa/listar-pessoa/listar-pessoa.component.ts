@@ -15,4 +15,12 @@ export class ListarPessoaComponent implements OnInit {
   ngOnInit(): void {
     this.pessoas = this.pessoaService.listarTodos();
   }
+
+  remover($event: any, pessoa: Pessoa): void {
+    $event.preventDefault();
+    if (confirm(`Deseja realmente remover a pessoa ${pessoa.nome}?`)) {
+      this.pessoaService.remover(pessoa.id!);
+      this.pessoas = this.pessoaService.listarTodos();
+    }
+  }
 }
