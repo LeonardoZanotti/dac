@@ -37,6 +37,9 @@
         [(ngModel)]="pessoa.idade"
         #idade="ngModel"
         required
+        numerico
+        minimoValidator
+        valorMinimo="18"
       />
       <div
         *ngIf="idade.errors && (idade.dirty || idade.touched)"
@@ -44,6 +47,9 @@
       >
         <div [hidden]="!idade.errors?.['required']">
           Digite a idade da pessoa.
+        </div>
+        <div [hidden]="!idade.errors?.['minimo']">
+          Idade deve ser maior ou igual a 18 anos
         </div>
       </div>
     </div>

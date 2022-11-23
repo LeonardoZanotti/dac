@@ -7,9 +7,10 @@ import { EnderecoModule } from './endereco/endereco.module';
 import { EstadoModule } from './estado/estado.module';
 import { PessoaModule } from './pessoa/pessoa.module';
 import { NumericoDirective } from './shared/directives/numerico.directive';
+import { MinimoValidatorDirective } from './shared/directives/minimo-validator.directive';
 
 @NgModule({
-  declarations: [AppComponent, NumericoDirective],
+  declarations: [AppComponent, NumericoDirective, MinimoValidatorDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,
