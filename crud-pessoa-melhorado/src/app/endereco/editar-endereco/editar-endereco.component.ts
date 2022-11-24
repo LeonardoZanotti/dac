@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CidadeService } from './../../cidade/services/cidade.service';
+import { Cidade } from './../../shared/models/cidade.model';
 import { Endereco } from './../../shared/models/endereco.model';
 import { EnderecoService } from './../services/endereco.service';
 
@@ -12,9 +14,11 @@ import { EnderecoService } from './../services/endereco.service';
 export class EditarEnderecoComponent implements OnInit {
   @ViewChild('formEndereco') formEndereco!: NgForm;
   endereco!: Endereco;
+  cidades!: Cidade[];
 
   constructor(
     private enderecoService: EnderecoService,
+    private cidadeService: CidadeService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -24,6 +28,7 @@ export class EditarEnderecoComponent implements OnInit {
     const res = this.enderecoService.buscarPorId(id);
     if (res) this.endereco = res;
     else throw new Error('Endereco não encontrado: id = ' + id);
+    this.cidades = this.cidadeService.listarTodos();
   }
 
   atualizar(): void {
@@ -31,5 +36,10 @@ export class EditarEnderecoComponent implements OnInit {
       this.enderecoService.atualizar(this.endereco);
       this.router.navigate(['/enderecos']);
     }
+  }
+
+  atualizarEstado(): void {
+    this.endereco.estado = this.endereco.cidade?.estado;
+    console.log(this.endereco.estado);
   }
 }

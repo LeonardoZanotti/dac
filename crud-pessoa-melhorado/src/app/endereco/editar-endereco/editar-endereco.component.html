@@ -100,22 +100,20 @@
 
     <div class="form-group">
       <label for="cidade">Cidade:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="cidade"
+      <ng-select
         name="cidade"
+        [items]="cidades"
+        bindLabel="nome"
         [(ngModel)]="endereco.cidade"
         #cidade="ngModel"
-        required
-      />
+        placeholder="Selecione uma cidade"
+        (change)="atualizarEstado()"
+      ></ng-select>
       <div
         *ngIf="cidade.errors && (cidade.dirty || cidade.touched)"
         class="alert alert-danger"
       >
-        <div [hidden]="!cidade.errors?.['required']">
-          Digite o nome da cidade.
-        </div>
+        <div [hidden]="!cidade.errors?.['required']">Selecione a cidade.</div>
       </div>
     </div>
 
@@ -126,18 +124,9 @@
         class="form-control"
         id="estado"
         name="estado"
-        [(ngModel)]="endereco.estado"
-        #estado="ngModel"
-        required
+        [value]="endereco?.estado?.nome"
+        readonly
       />
-      <div
-        *ngIf="estado.errors && (estado.dirty || estado.touched)"
-        class="alert alert-danger"
-      >
-        <div [hidden]="!estado.errors?.['required']">
-          Digite o nome do estado.
-        </div>
-      </div>
     </div>
 
     <div class="form-group">

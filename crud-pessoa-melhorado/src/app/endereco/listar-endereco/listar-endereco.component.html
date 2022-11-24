@@ -32,8 +32,8 @@
       </td>
       <td class="text-center">{{ endereco.bairro }}</td>
       <td class="text-center">{{ endereco.cep! | mask: "00.000-000" }}</td>
-      <td class="text-center">{{ endereco.cidade }}</td>
-      <td class="text-center">{{ endereco.estado }}</td>
+      <td class="text-center">{{ endereco.cidade?.nome }}</td>
+      <td class="text-center">{{ endereco.estado?.nome }}</td>
       <td class="text-center">
         {{ endereco.residencial! ? "Residencial" : "Comercial" }}
       </td>

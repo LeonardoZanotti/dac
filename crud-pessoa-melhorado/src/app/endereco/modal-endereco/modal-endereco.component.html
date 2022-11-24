@@ -19,8 +19,8 @@
     </p>
     <p>Bairro: {{ endereco.bairro }}</p>
     <p>CEP: {{ endereco.cep! | mask: "00.000-000" }}</p>
-    <p>Cidade: {{ endereco.cidade }}</p>
-    <p>Estado: {{ endereco.estado }}</p>
+    <p>Cidade: {{ endereco.cidade?.nome }}</p>
+    <p>Estado: {{ endereco.estado?.nome }}</p>
     <p>{{ endereco.residencial! ? "Residencial" : "Comercial" }}</p>
   </div>
 </div>
