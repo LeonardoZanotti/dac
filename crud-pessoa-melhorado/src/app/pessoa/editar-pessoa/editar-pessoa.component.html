@@ -77,6 +77,55 @@
     </div>
 
     <div class="form-group">
+      <label for="motorista">Carteira de motorista:</label>
+
+      <br />
+      <input
+        type="radio"
+        class="form-check-input"
+        id="motorista1"
+        name="motorista"
+        [(ngModel)]="pessoa.motorista"
+        #motorista1="ngModel"
+        value="Não possui"
+      />
+      Não possui <br />
+
+      <input
+        type="radio"
+        class="form-check-input"
+        id="motorista2"
+        name="motorista"
+        [(ngModel)]="pessoa.motorista"
+        #motorista2="ngModel"
+        value="A"
+      />
+      A <br />
+
+      <input
+        type="radio"
+        class="form-check-input"
+        id="motorista3"
+        name="motorista"
+        [(ngModel)]="pessoa.motorista"
+        #motorista3="ngModel"
+        value="B"
+      />
+      B <br />
+
+      <input
+        type="radio"
+        class="form-check-input"
+        id="motorista4"
+        name="motorista"
+        [(ngModel)]="pessoa.motorista"
+        #motorista4="ngModel"
+        value="AB"
+      />
+      AB <br />
+    </div>
+
+    <div class="form-group">
       <button
         type="button"
         class="btn btn-primary"

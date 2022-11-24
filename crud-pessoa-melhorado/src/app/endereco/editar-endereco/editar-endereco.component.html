@@ -49,7 +49,6 @@
         name="complemento"
         [(ngModel)]="endereco.complemento"
         #complemento="ngModel"
-        required
       />
       <div
         *ngIf="complemento.errors && (complemento.dirty || complemento.touched)"
@@ -139,6 +138,18 @@
           Digite o nome do estado.
         </div>
       </div>
+    </div>
+
+    <div class="form-group">
+      <label for="residencial">Residencial:</label>
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="residencial"
+        name="residencial"
+        [(ngModel)]="endereco.residencial"
+        #residencial="ngModel"
+      />
     </div>
 
     <div class="form-group">

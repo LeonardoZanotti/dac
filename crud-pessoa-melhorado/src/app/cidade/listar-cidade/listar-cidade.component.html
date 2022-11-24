@@ -19,8 +19,8 @@
     </tr>
 
     <tr *ngFor="let cidade of cidades">
-      <td class="text-center">{{ cidade.nome }}</td>
-      <td class="text-center">{{ cidade.estado }}</td>
+      <td class="text-center">{{ cidade?.nome }}</td>
+      <td class="text-center">{{ cidade?.estado?.sigla }}</td>
       <td class="text-center" style="width: 300px">
         <button
           type="button"

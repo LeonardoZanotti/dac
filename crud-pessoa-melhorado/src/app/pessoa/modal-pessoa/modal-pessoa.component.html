@@ -14,6 +14,10 @@
     <p>Nome: {{ pessoa.nome }}</p>
     <p>Idade: {{ pessoa.idade }}</p>
     <p>Data de nascimento: {{ pessoa.nascimento! | mask: "d0/M0/0000" }}</p>
+    <p>
+      Carteira de motorista:
+      {{ pessoa.motorista! ? pessoa.motorista : "Não possui" }}
+    </p>
   </div>
 </div>
 <div class="modal-footer">

@@ -6,6 +6,7 @@
       <th class="text-center">Nome</th>
       <th class="text-center">Idade</th>
       <th class="text-center">Data de nascimento</th>
+      <th class="text-center">Carteira de motorista</th>
       <th class="text-center">
         <a
           [routerLink]="['/pessoas/novo']"
@@ -23,6 +24,9 @@
       <td class="text-center">{{ pessoa.nome | caixaAlta }}</td>
       <td class="text-center">{{ pessoa.idade }}</td>
       <td class="text-center">{{ pessoa.nascimento! | mask: "d0/M0/0000" }}</td>
+      <td class="text-center">
+        {{ pessoa.motorista! ? pessoa.motorista : "Não possui" }}
+      </td>
       <td class="text-center" style="width: 300px">
         <button
           type="button"
