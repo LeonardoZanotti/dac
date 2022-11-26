@@ -1,5 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Login } from './../../shared/models/login.model';
 import { Usuario } from './../../shared/models/usuario.model';
 
@@ -9,7 +10,14 @@ const LS_CHAVE: string = 'usuarioLogado';
   providedIn: 'root',
 })
 export class LoginService {
-  constructor() {}
+  BASE_URL: string = 'http://localhost:8080/login/';
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  constructor(private httpClient: HttpClient) {}
 
   public get usuarioLogado(): Usuario {
     let user = localStorage[LS_CHAVE];
@@ -21,35 +29,40 @@ export class LoginService {
   }
 
   login(login: Login): Observable<Usuario | null> {
-    let usuario = new Usuario(
-      1,
-      'Leonardo-Func',
-      login.login,
-      login.senha,
-      'FUNC'
+    return this.httpClient.post<Usuario>(
+      this.BASE_URL,
+      login,
+      this.httpOptions
     );
+    // let usuario = new Usuario(
+    //   1,
+    //   'Leonardo-Func',
+    //   login.login,
+    //   login.senha,
+    //   'FUNC'
+    // );
 
-    if (login.login === login.senha) {
-      if (login.login === 'admin') {
-        usuario = new Usuario(
-          1,
-          'Leonardo-Admin',
-          login.login,
-          login.senha,
-          'ADMIN'
-        );
-      } else if (login.login === 'gerente') {
-        usuario = new Usuario(
-          1,
-          'Leonardo-Gerente',
-          login.login,
-          login.senha,
-          'GERENTE'
-        );
-      }
-      return of(usuario);
-    }
-    return of(null);
+    // if (login.login === login.senha) {
+    //   if (login.login === 'admin') {
+    //     usuario = new Usuario(
+    //       1,
+    //       'Leonardo-Admin',
+    //       login.login,
+    //       login.senha,
+    //       'ADMIN'
+    //     );
+    //   } else if (login.login === 'gerente') {
+    //     usuario = new Usuario(
+    //       1,
+    //       'Leonardo-Gerente',
+    //       login.login,
+    //       login.senha,
+    //       'GERENTE'
+    //     );
+    //   }
+    //   return of(usuario);
+    // }
+    // return of(null);
   }
 
   logout() {
