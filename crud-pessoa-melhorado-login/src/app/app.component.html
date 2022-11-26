@@ -4,18 +4,36 @@
       ><i class="fa fa-user-edit"></i
     ></a>
 
-    <div class="navbar-collapse collapsed" id="navbarContent">
+    <div
+      class="navbar-collapse collapsed d-flex justify-content-between"
+      id="navbarContent"
+    >
       <ul class="navbar-nav ml-auto">
         <li class="navbar-nav ml-auto">
           <a class="nav-link" href="#" routerLink="/pessoas">Pessoas</a>
         </li>
-        <li class="navbar-nav ml-auto">
+        <li
+          *ngIf="
+            usuarioLogado?.perfil === 'ADMIN' ||
+            usuarioLogado?.perfil === 'GERENTE'
+          "
+          class="navbar-nav ml-auto"
+        >
           <a class="nav-link" href="#" routerLink="/enderecos">Endereços</a>
         </li>
-        <li class="navbar-nav ml-auto">
+        <li
+          *ngIf="
+            usuarioLogado?.perfil === 'ADMIN' ||
+            usuarioLogado?.perfil === 'FUNC'
+          "
+          class="navbar-nav ml-auto"
+        >
           <a class="nav-link" href="#" routerLink="/cidades">Cidades</a>
         </li>
-        <li class="navbar-nav ml-auto">
+        <li
+          *ngIf="usuarioLogado?.perfil === 'GERENTE'"
+          class="navbar-nav ml-auto"
+        >
           <a class="nav-link" href="#" routerLink="/estados">Estados</a>
         </li>
 
@@ -41,6 +59,10 @@
               >Pessoas</a
             >
             <a
+              *ngIf="
+                usuarioLogado?.perfil === 'ADMIN' ||
+                usuarioLogado?.perfil === 'GERENTE'
+              "
               ngbDropdownItem
               href="#"
               routerLink="/enderecos/novo"
@@ -48,6 +70,10 @@
               >Endereços</a
             >
             <a
+              *ngIf="
+                usuarioLogado?.perfil === 'ADMIN' ||
+                usuarioLogado?.perfil === 'FUNC'
+              "
               ngbDropdownItem
               href="#"
               routerLink="/cidades/novo"
@@ -55,6 +81,7 @@
               >Cidades</a
             >
             <a
+              *ngIf="usuarioLogado?.perfil === 'GERENTE'"
               ngbDropdownItem
               href="#"
               routerLink="/estados/novo"
@@ -62,6 +89,17 @@
               >Estados</a
             >
           </div>
+        </li>
+      </ul>
+
+      <ul *ngIf="usuarioLogado" class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="logout()">Logout</a>
+        </li>
+        <li class="nav-item">
+          <p class="navbar-text mb-0 text-white">
+            <i class="fa fa-user"></i> {{ usuarioLogado?.nome }}
+          </p>
         </li>
       </ul>
     </div>
