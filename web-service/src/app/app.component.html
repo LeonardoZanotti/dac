@@ -13,6 +13,12 @@
           <a class="nav-link" href="#" routerLink="/pessoas">Pessoas</a>
         </li>
         <li
+          *ngIf="usuarioLogado?.perfil === 'ADMIN'"
+          class="navbar-nav ml-auto"
+        >
+          <a class="nav-link" href="#" routerLink="/usuarios">Usuários</a>
+        </li>
+        <li
           *ngIf="
             usuarioLogado?.perfil === 'ADMIN' ||
             usuarioLogado?.perfil === 'GERENTE'
@@ -57,6 +63,14 @@
               routerLink="/pessoas/novo"
               (click)="$event.preventDefault()"
               >Pessoas</a
+            >
+            <a
+              *ngIf="usuarioLogado?.perfil === 'ADMIN'"
+              ngbDropdownItem
+              href="#"
+              routerLink="/usuarios/novo"
+              (click)="$event.preventDefault()"
+              >Usuários</a
             >
             <a
               *ngIf="
