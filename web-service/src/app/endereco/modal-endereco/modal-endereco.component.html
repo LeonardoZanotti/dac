@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <button
+    type="button"
+    class="close"
+    aria-label="Fechar"
+    (click)="activeModal.dismiss()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title" id="modalLabel">Endereço</h4>
+</div>
+<div class="modal-body text-center">
+  <div>
+    <p>Rua: {{ endereco.rua }}</p>
+    <p>Número: {{ endereco.numero }}</p>
+    <p>
+      Complemento:
+      {{ endereco.complemento ? endereco.complemento : "Não informado" }}
+    </p>
+    <p>Bairro: {{ endereco.bairro }}</p>
+    <p>CEP: {{ endereco.cep! | mask: "00.000-000" }}</p>
+    <p>Cidade: {{ endereco.cidade?.nome }}</p>
+    <p>Estado: {{ endereco.estado?.nome }}</p>
+    <p>{{ endereco.residencial! ? "Residencial" : "Comercial" }}</p>
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.close()"
+  >
+    Fechar
+  </button>
+</div>

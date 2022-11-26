@@ -1,0 +1,60 @@
+<h1>Pessoas</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th class="text-center">Nome</th>
+      <th class="text-center">Idade</th>
+      <th class="text-center">Data de nascimento</th>
+      <th class="text-center">Carteira de motorista</th>
+      <th class="text-center">
+        <a
+          [routerLink]="['/pessoas/novo']"
+          href="#"
+          title="Novo"
+          alt="Novo"
+          class="btn btn-xs btn-success"
+        >
+          <i class="fa fa-plus" aria-hidden="true"></i> Novo
+        </a>
+      </th>
+    </tr>
+
+    <tr *ngFor="let pessoa of pessoas">
+      <td class="text-center">{{ pessoa.nome | caixaAlta }}</td>
+      <td class="text-center">{{ pessoa.idade }}</td>
+      <td class="text-center">{{ pessoa.nascimento! | mask: "d0/M0/0000" }}</td>
+      <td class="text-center">
+        {{ pessoa.motorista! ? pessoa.motorista : "Não possui" }}
+      </td>
+      <td class="text-center" style="width: 300px">
+        <button
+          type="button"
+          class="btn btn-xs btn-info"
+          (click)="abrirModalPessoa(pessoa)"
+        >
+          <i class="fa fa-eye" aria-hidden="true"></i> Ver
+        </button>
+        <a
+          [routerLink]="['/pessoas/editar', pessoa.id]"
+          href="#"
+          title="Editar"
+          alt="Editar"
+          class="btn btn-xs btn-info"
+        >
+          <i class="fa fa-edit" aria-hidden="true"></i> Editar
+        </a>
+        <a
+          (click)="remover($event, pessoa)"
+          href="#"
+          title="Remover"
+          alt="Remover"
+          class="btn btn-xs btn-danger"
+        >
+          <i class="fa fa-times" aria-hidden="true"></i> Remover
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p *ngIf="pessoas?.length === 0">Nenhuma pessoa cadastrada.</p>

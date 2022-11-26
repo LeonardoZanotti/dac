@@ -1,0 +1,142 @@
+<h1>Nova Pessoa</h1>
+
+<div class="well">
+  <form #formPessoa="ngForm">
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nome"
+        name="nome"
+        [(ngModel)]="pessoa.nome"
+        #nome="ngModel"
+        minlength="2"
+        required
+      />
+      <div
+        *ngIf="nome.errors && (nome.dirty || nome.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!nome.errors?.['required']">
+          Digite o nome da pessoa.
+        </div>
+        <div [hidden]="!nome.errors?.['minlength']">
+          O nome deve conter ao menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="idade">Idade:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="idade"
+        name="idade"
+        [(ngModel)]="pessoa.idade"
+        #idade="ngModel"
+        required
+        numerico
+        minimoValidator
+        valorMinimo="18"
+      />
+      <div
+        *ngIf="idade.errors && (idade.dirty || idade.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!idade.errors?.['required']">
+          Digite a idade da pessoa.
+        </div>
+        <div [hidden]="!idade.errors?.['minimo']">
+          Idade deve ser maior ou igual a 18 anos
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nascimento">Data de nascimento:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nascimento"
+        name="nascimento"
+        [(ngModel)]="pessoa.nascimento"
+        #nascimento="ngModel"
+        mask="d0/M0/0000"
+        required
+      />
+      <div
+        *ngIf="nascimento.errors && (nascimento.dirty || nascimento.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!nascimento.errors?.['required']">
+          Informe a data de nascimento da pessoa.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="motorista">Carteira de motorista:</label>
+
+      <br />
+      <input
+        type="radio"
+        class="form-check-input"
+        id="motorista1"
+        name="motorista"
+        [(ngModel)]="pessoa.motorista"
+        #motorista1="ngModel"
+        value="Não possui"
+      />
+      Não possui <br />
+
+      <input
+        type="radio"
+        class="form-check-input"
+        id="motorista2"
+        name="motorista"
+        [(ngModel)]="pessoa.motorista"
+        #motorista2="ngModel"
+        value="A"
+      />
+      A <br />
+
+      <input
+        type="radio"
+        class="form-check-input"
+        id="motorista3"
+        name="motorista"
+        [(ngModel)]="pessoa.motorista"
+        #motorista3="ngModel"
+        value="B"
+      />
+      B <br />
+
+      <input
+        type="radio"
+        class="form-check-input"
+        id="motorista4"
+        name="motorista"
+        [(ngModel)]="pessoa.motorista"
+        #motorista4="ngModel"
+        value="AB"
+      />
+      AB <br />
+    </div>
+
+    <div class="form-group">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="inserir()"
+        [disabled]="!formPessoa.form.valid"
+      >
+        <i class="fa fa-save" aria-hidden="true"></i> Salvar
+      </button>
+      <a [routerLink]="['/pessoas']" class="btn btn-secondary">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+      </a>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,158 @@
+<h1>Editar Endereço</h1>
+
+<div class="well">
+  <form #formEndereco="ngForm">
+    <div class="form-group">
+      <label for="rua">Rua:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="rua"
+        name="rua"
+        [(ngModel)]="endereco.rua"
+        #rua="ngModel"
+        required
+      />
+      <div
+        *ngIf="rua.errors && (rua.dirty || rua.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!rua.errors?.['required']">Digite o nome da rua.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="numero">Número:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="numero"
+        name="numero"
+        [(ngModel)]="endereco.numero"
+        #numero="ngModel"
+        required
+      />
+      <div
+        *ngIf="numero.errors && (numero.dirty || numero.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!numero.errors?.['required']">Digite o número.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="complemento">Complemento:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="complemento"
+        name="complemento"
+        [(ngModel)]="endereco.complemento"
+        #complemento="ngModel"
+      />
+      <div
+        *ngIf="complemento.errors && (complemento.dirty || complemento.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!complemento.errors?.['required']">
+          Digite o complemento.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bairro">Bairro:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="bairro"
+        name="bairro"
+        [(ngModel)]="endereco.bairro"
+        #bairro="ngModel"
+        required
+      />
+      <div
+        *ngIf="bairro.errors && (bairro.dirty || bairro.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!bairro.errors?.['required']">Digite o bairro.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cep">CEP:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="cep"
+        name="cep"
+        [(ngModel)]="endereco.cep"
+        #cep="ngModel"
+        required
+      />
+      <div
+        *ngIf="cep.errors && (cep.dirty || cep.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!cep.errors?.['required']">Digite o CEP.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cidade">Cidade:</label>
+      <ng-select
+        name="cidade"
+        [items]="cidades"
+        bindLabel="nome"
+        [(ngModel)]="endereco.cidade"
+        #cidade="ngModel"
+        placeholder="Selecione uma cidade"
+        (change)="atualizarEstado()"
+      ></ng-select>
+      <div
+        *ngIf="cidade.errors && (cidade.dirty || cidade.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!cidade.errors?.['required']">Selecione a cidade.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="estado">Estado:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="estado"
+        name="estado"
+        [value]="endereco?.estado?.nome"
+        readonly
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="residencial">Residencial:</label>
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="residencial"
+        name="residencial"
+        [(ngModel)]="endereco.residencial"
+        #residencial="ngModel"
+      />
+    </div>
+
+    <div class="form-group">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="atualizar()"
+        [disabled]="!formEndereco.form.valid"
+      >
+        <i class="fa fa-save" aria-hidden="true"></i> Salvar
+      </button>
+      <a [routerLink]="['/enderecos']" class="btn btn-secondary">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+      </a>
+    </div>
+  </form>
+</div>
