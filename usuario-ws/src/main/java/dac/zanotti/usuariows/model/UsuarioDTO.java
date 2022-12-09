@@ -5,15 +5,16 @@
 package dac.zanotti.usuariows.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author leonardozanotti
  */
-@Entity
-@Table(name="tb_usuarios")
-public class Usuario implements Serializable {
+public class UsuarioDTO implements Serializable {
     private static final Long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +29,7 @@ public class Usuario implements Serializable {
     @Column(name="perfil")
     private String perfil;
 
-    public Usuario(int id, String nome, String login, String senha, String perfil) {
+    public UsuarioDTO(int id, String nome, String login, String senha, String perfil) {
         super();
         this.id = id;
         this.nome = nome;
@@ -37,7 +38,7 @@ public class Usuario implements Serializable {
         this.perfil = perfil;
     }
 
-    public Usuario() {
+    public UsuarioDTO() {
         super();
     }
 
