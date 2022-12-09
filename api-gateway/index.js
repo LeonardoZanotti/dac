@@ -13,6 +13,37 @@ const app = express();
 // Proxy
 const usuariosServiceProxy = httpProxy('http://localhost:5000');
 const boisServiceProxy = httpProxy('http://localhost:5001');
+const authServiceProxy = httpProxy('http://localhost:5050', {
+  proxyReqBodyDecorator: function (bodyContent, srcReq) {
+    try {
+      retBody = {};
+      retBody.login = bodyContent.user;
+      retBody.senha = bodyContent.password;
+      bodyContent = retBody;
+    } catch (e) {
+      console.log('ERRO: ' + e);
+    }
+    return bodyContent;
+  },
+  proxyReqOptDecorator: function (proxyReqOpts, srcReq) {
+    proxyReqOpts.headers['Content-Type'] = 'application/json';
+    proxyReqOpts.method = 'POST';
+    return proxyReqOpts;
+  },
+  userResDecorator: function (proxyRes, proxyResData, userReq, userRes) {
+    if (proxyRes.statusCode === 200) {
+      const str = Buffer.from(proxyResData).toString('utf-8');
+      const objBody = JSON.parse(str);
+      const id = objBody.id;
+      const token = jwt.sign({ id }, process.env.SECRET, { expiresIn: 300 });
+      userRes.status(200);
+      return { auth: true, token, data: objBody };
+    } else {
+      userRes.status(401);
+      return { message: 'Login inválido!' };
+    }
+  },
+});
 
 // Configs
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,16 +64,7 @@ function verifyJWT(req, res, next) {
 }
 
 app.post('/login', (req, res, next) => {
-  if (req.body.user === 'admin' && req.body.password === 'admin') {
-    // auth ok
-    const id = 1; // deveria vir do serviço de autenticação
-    const token = jwt.sign({ id }, process.env.SECRET, {
-      expiresIn: 300,
-    });
-    return res.json({ auth: true, token });
-  }
-
-  res.status(500).json({ message: 'Login inválido!' });
+  authServiceProxy(req, res, next);
 });
 
 app.post('/logout', (req, res) => {
