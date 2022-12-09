@@ -1,0 +1,28 @@
+{
+  "bois": [
+    {
+      "id": 1,
+      "nome": "Mimosa",
+      "raca": "Holandesa",
+      "idade": 5
+    },
+    {
+      "id": 2,
+      "nome": "Bandido",
+      "raca": "Nelore",
+      "idade": 3
+    },
+    {
+      "id": 3,
+      "nome": "Lindinha",
+      "raca": "Charolês",
+      "idade": 7
+    },
+    {
+      "id": 4,
+      "nome": "Pimpolho",
+      "raca": "Zebú",
+      "idade": 2
+    }
+  ]
+}
