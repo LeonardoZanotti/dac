@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  dac-usuario:
+    image: 'usuario-ws:latest'
+    build:
+      context: .
+    container_name: dac-usuario
+    depends_on:
+      - dac-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://dac-db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - 5050:5050
+          
+  dac-db:
+    image: 'postgres:13.1-alpine'
+    container_name: dac-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
